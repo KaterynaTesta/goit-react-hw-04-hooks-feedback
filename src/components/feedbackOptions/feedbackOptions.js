@@ -18,10 +18,6 @@ const FeedbackOptions = ({ options, onClick }) => {
     </FeedbackStyled>
   );
 };
-// function upperCaseLetter(str) {
-//   if (!str) return str;
-//   return str[0].toUpperCase() + str.slice(1);
-// }
 
 FeedbackOptions.propTypes = {
   options: PropTypes.array.isRequired,
