@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import FeedbackStyled from './feedbackOptionsStyled';
 
-const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+const FeedbackOptions = ({ options, onClick }) => {
   return (
     <FeedbackStyled>
-      <ul onClick={onLeaveFeedback}>
+      <ul>
         {options.map(option => (
-          <li key={option}>
-            <button type="button" name={option}>
-              {option.toUpperCase()}
+          <li key={nanoid()}>
+            <button type="button" onClick={() => onClick(option)}>
+              {option}
             </button>
           </li>
         ))}
@@ -17,10 +18,14 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     </FeedbackStyled>
   );
 };
+// function upperCaseLetter(str) {
+//   if (!str) return str;
+//   return str[0].toUpperCase() + str.slice(1);
+// }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;
